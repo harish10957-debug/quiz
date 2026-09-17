@@ -1,14 +1,8 @@
-```javascript
-/* =========================================
-   QUIZ DATA
-   5 LEVELS × 10 QUESTIONS
-========================================= */
+
 
 const quizData = [
 
-    /* =====================================
-       LEVEL 1 - ROOKIE
-    ===================================== */
+   
 
     [
         {
@@ -123,9 +117,7 @@ const quizData = [
     ],
 
 
-    /* =====================================
-       LEVEL 2 - EXPLORER
-    ===================================== */
+   
 
     [
         {
@@ -877,9 +869,6 @@ function showResult() {
 }
 
 
-/* =========================================
-   RETURN TO LEVEL SCREEN
-========================================= */
 
 function goHome() {
 
@@ -895,4 +884,4 @@ function goHome() {
     document.getElementById("levelScreen").style.display =
         "block";
 }
-```
+
