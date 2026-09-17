@@ -1,0 +1,662 @@
+```css
+/* =========================================
+   GENERAL
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+    color: white;
+    overflow-x: hidden;
+
+    background:
+        radial-gradient(
+            circle at 20% 20%,
+            #153b68 0%,
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 80% 70%,
+            #41125d 0%,
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #050816,
+            #0a1026,
+            #09051c
+        );
+}
+
+
+/* =========================================
+   ANIMATED GRID BACKGROUND
+========================================= */
+
+body::before {
+    content: "";
+
+    position: fixed;
+    inset: 0;
+
+    background-image:
+        linear-gradient(
+            rgba(0,255,255,0.04) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(0,255,255,0.04) 1px,
+            transparent 1px
+        );
+
+    background-size: 45px 45px;
+
+    animation: gridMove 12s linear infinite;
+
+    pointer-events: none;
+}
+
+@keyframes gridMove {
+
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(45px);
+    }
+}
+
+
+/* =========================================
+   MAIN CONTAINER
+========================================= */
+
+.container {
+    width: 92%;
+    max-width: 1000px;
+
+    margin: auto;
+    padding: 35px 0;
+
+    position: relative;
+    z-index: 2;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.header {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.logo {
+    font-family: 'Orbitron', sans-serif;
+
+    font-size: clamp(
+        30px,
+        6vw,
+        55px
+    );
+
+    font-weight: 800;
+
+    letter-spacing: 4px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #00ffff,
+            #8a5cff,
+            #ff2bd6
+        );
+
+    -webkit-background-clip: text;
+    color: transparent;
+
+    text-shadow:
+        0 0 30px
+        rgba(0,255,255,0.3);
+}
+
+.subtitle {
+    color: #a9b8d8;
+
+    margin-top: 8px;
+
+    letter-spacing: 2px;
+}
+
+
+/* =========================================
+   GLASS CARD
+========================================= */
+
+.card {
+    background:
+        rgba(12, 20, 45, 0.82);
+
+    border:
+        1px solid
+        rgba(0,255,255,0.3);
+
+    border-radius: 25px;
+
+    padding: 35px;
+
+    box-shadow:
+        0 0 35px
+        rgba(0,255,255,0.12),
+
+        inset 0 0 30px
+        rgba(100,50,255,0.05);
+
+    backdrop-filter: blur(15px);
+}
+
+
+/* =========================================
+   LEVEL SCREEN
+========================================= */
+
+.level-title {
+    text-align: center;
+
+    font-family: 'Orbitron', sans-serif;
+
+    font-size: 24px;
+
+    margin-bottom: 25px;
+
+    color: #00ffff;
+}
+
+.levels {
+    display: grid;
+
+    grid-template-columns:
+        repeat(5, 1fr);
+
+    gap: 15px;
+}
+
+
+/* =========================================
+   LEVEL BUTTON
+========================================= */
+
+.level-btn {
+
+    border:
+        1px solid
+        #00ffff;
+
+    background:
+        rgba(0,255,255,0.05);
+
+    color: white;
+
+    padding: 20px 10px;
+
+    border-radius: 15px;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+
+    font-family:
+        'Orbitron',
+        sans-serif;
+}
+
+.level-btn:hover {
+
+    transform:
+        translateY(-7px)
+        scale(1.03);
+
+    background:
+        rgba(0,255,255,0.15);
+
+    box-shadow:
+        0 0 25px
+        #00ffff;
+}
+
+.level-number {
+
+    display: block;
+
+    font-size: 25px;
+
+    color: #00ffff;
+
+    margin-bottom: 7px;
+}
+
+.level-name {
+
+    font-size: 11px;
+
+    color: #c5cde0;
+}
+
+
+/* =========================================
+   QUIZ SCREEN
+========================================= */
+
+#quizScreen,
+#resultScreen {
+    display: none;
+}
+
+
+/* =========================================
+   QUIZ TOP
+========================================= */
+
+.quiz-top {
+
+    display: flex;
+
+    justify-content:
+        space-between;
+
+    align-items: center;
+
+    margin-bottom: 20px;
+
+    gap: 15px;
+}
+
+.badge {
+
+    padding: 9px 15px;
+
+    border-radius: 20px;
+
+    background:
+        rgba(138,92,255,0.15);
+
+    border:
+        1px solid
+        #8a5cff;
+
+    color: #c5b5ff;
+
+    font-family:
+        'Orbitron',
+        sans-serif;
+
+    font-size: 12px;
+}
+
+
+/* =========================================
+   TIMER
+========================================= */
+
+.timer {
+
+    font-family:
+        'Orbitron',
+        sans-serif;
+
+    color: #ff4fd8;
+
+    border:
+        1px solid
+        #ff4fd8;
+
+    padding: 9px 15px;
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 0 15px
+        rgba(255,79,216,0.3);
+}
+
+
+/* =========================================
+   PROGRESS BAR
+========================================= */
+
+.progress-container {
+
+    height: 9px;
+
+    background: #151c38;
+
+    border-radius: 10px;
+
+    overflow: hidden;
+
+    margin-bottom: 30px;
+}
+
+.progress {
+
+    height: 100%;
+
+    width: 0%;
+
+    background:
+        linear-gradient(
+            90deg,
+            #00ffff,
+            #8a5cff,
+            #ff2bd6
+        );
+
+    border-radius: 10px;
+
+    transition:
+        width 0.4s;
+
+    box-shadow:
+        0 0 15px
+        #00ffff;
+}
+
+
+/* =========================================
+   QUESTION
+========================================= */
+
+.question-number {
+
+    color: #00ffff;
+
+    font-family:
+        'Orbitron',
+        sans-serif;
+
+    margin-bottom: 12px;
+}
+
+.question {
+
+    font-size: 24px;
+
+    line-height: 1.5;
+
+    margin-bottom: 25px;
+}
+
+
+/* =========================================
+   OPTIONS
+========================================= */
+
+.options {
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 15px;
+}
+
+.option {
+
+    padding: 18px;
+
+    border-radius: 15px;
+
+    border:
+        1px solid
+        rgba(0,255,255,0.3);
+
+    background:
+        rgba(255,255,255,0.03);
+
+    color: white;
+
+    text-align: left;
+
+    font-size: 16px;
+
+    cursor: pointer;
+
+    transition: 0.25s;
+}
+
+.option:hover {
+
+    border-color:
+        #00ffff;
+
+    background:
+        rgba(0,255,255,0.1);
+
+    transform:
+        translateX(5px);
+
+    box-shadow:
+        0 0 18px
+        rgba(0,255,255,0.2);
+}
+
+
+/* Correct answer */
+
+.option.correct {
+
+    background:
+        rgba(0,255,120,0.15);
+
+    border-color:
+        #00ff88;
+
+    box-shadow:
+        0 0 20px
+        rgba(0,255,136,0.4);
+}
+
+
+/* Wrong answer */
+
+.option.wrong {
+
+    background:
+        rgba(255,50,90,0.15);
+
+    border-color:
+        #ff325a;
+
+    box-shadow:
+        0 0 20px
+        rgba(255,50,90,0.3);
+}
+
+.option:disabled {
+    cursor: not-allowed;
+}
+
+
+/* =========================================
+   RESULT SCREEN
+========================================= */
+
+.result {
+    text-align: center;
+}
+
+.result-icon {
+
+    font-size: 75px;
+
+    margin-bottom: 15px;
+}
+
+.result h2 {
+
+    font-family:
+        'Orbitron',
+        sans-serif;
+
+    font-size: 35px;
+
+    color: #00ffff;
+}
+
+.score {
+
+    font-size: 65px;
+
+    font-family:
+        'Orbitron',
+        sans-serif;
+
+    margin: 20px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #00ffff,
+            #ff2bd6
+        );
+
+    -webkit-background-clip: text;
+
+    color: transparent;
+}
+
+.result-message {
+
+    color: #b5c0db;
+
+    margin-bottom: 25px;
+}
+
+
+/* =========================================
+   RESTART BUTTON
+========================================= */
+
+.restart-btn {
+
+    padding:
+        15px 30px;
+
+    border: none;
+
+    border-radius: 30px;
+
+    color: white;
+
+    font-family:
+        'Orbitron',
+        sans-serif;
+
+    cursor: pointer;
+
+    background:
+        linear-gradient(
+            90deg,
+            #00aaff,
+            #8a4dff,
+            #ff2bd6
+        );
+
+    box-shadow:
+        0 0 25px
+        rgba(138,77,255,0.5);
+
+    transition: 0.3s;
+}
+
+.restart-btn:hover {
+
+    transform:
+        scale(1.07);
+
+    box-shadow:
+        0 0 35px
+        rgba(255,43,214,0.6);
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.footer {
+
+    text-align: center;
+
+    margin-top: 25px;
+
+    color: #697797;
+
+    font-size: 13px;
+}
+
+
+/* =========================================
+   RESPONSIVE DESIGN
+========================================= */
+
+@media (max-width: 750px) {
+
+    .levels {
+
+        grid-template-columns:
+            1fr 1fr;
+    }
+
+    .options {
+
+        grid-template-columns:
+            1fr;
+    }
+
+    .question {
+
+        font-size: 20px;
+    }
+
+    .card {
+
+        padding: 22px;
+    }
+}
+
+
+@media (max-width: 450px) {
+
+    .levels {
+
+        grid-template-columns:
+            1fr;
+    }
+
+    .quiz-top {
+
+        flex-direction:
+            column;
+
+        align-items:
+            stretch;
+    }
+
+    .timer,
+    .badge {
+
+        text-align: center;
+    }
+}
+```
